@@ -48,6 +48,7 @@ steps:
       az extension add -n ml -y --version 2.2.1
       az configure --defaults group=mlopsv2test workspace=bbezmlaml location=eastus2 
 - task: Bash@3
+  continueOnError: true
   inputs:
     targetType: 'inline'
     script: |
@@ -66,6 +67,7 @@ steps:
       # Write your commands here
       az ml job create -f core/training/ml_training.yml  
 - task: Bash@3
+  continueOnError: true
   inputs:
     targetType: 'inline'
     script: |
