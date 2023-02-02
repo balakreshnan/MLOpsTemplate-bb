@@ -81,6 +81,14 @@ steps:
       # Write your commands here
       az ml job create -f src/workshop/core/evaluating/ml_evaluating.yml  
 - task: Bash@3
+  displayName: 'Endpoint deletion ...'
+  continueOnError: true
+  inputs:
+    targetType: 'inline'
+    script: |
+      # Write your commands here
+      az ml online-endpoint delete --name bbmlopsendpt --yes
+- task: Bash@3
   displayName: 'Endpoint Creation'
   inputs:
     targetType: 'inline'
